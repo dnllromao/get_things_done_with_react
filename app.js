@@ -4,6 +4,7 @@ class App extends React.Component {
 		this.state = {
 			tasks: [
 				{
+					id: 0,
 					task: "Faire la vaissaile",
 					done: false
 				}
@@ -13,6 +14,7 @@ class App extends React.Component {
 
 	_addTask(task) {
 		let newTask = [{
+			id: this.state.tasks.length,
 			task: task,
 			done: false
 		}];
@@ -20,7 +22,6 @@ class App extends React.Component {
 		this.setState({
 			tasks: tasks
 		});
-
 	}
 
 	_updateTask(task) {
@@ -78,7 +79,7 @@ class TaskList extends React.Component {
 					})
 					.map( (task, index) => {
 						return (<Task   key={index} 
-										index={index} 
+										index={task.id} 
 										task={task.task} 
 										updateTask={this.props.updateTask} 
 										checked={false}
@@ -92,7 +93,7 @@ class TaskList extends React.Component {
 					})
 					.map( (task, index) => {
 						return (<Task   key={index} 
-										index={index} 
+										index={task.id} 
 										task={task.task} 
 										updateTask={this.props.updateTask} 
 										checked={true}
